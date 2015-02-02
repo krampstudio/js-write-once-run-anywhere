@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+
+    <title>Js-write-once-run-anywhere by krampstudio</title>
+  </head>
+
+  <body>
+
+    <header>
+      <div class="container">
+        <h1>Js-write-once-run-anywhere</h1>
+        <h2></h2>
+
+        <section id="downloads">
+          <a href="https://github.com/krampstudio/js-write-once-run-anywhere/zipball/master" class="btn">Download as .zip</a>
+          <a href="https://github.com/krampstudio/js-write-once-run-anywhere/tarball/master" class="btn">Download as .tar.gz</a>
+          <a href="https://github.com/krampstudio/js-write-once-run-anywhere" class="btn btn-github"><span class="icon"></span>View on GitHub</a>
+        </section>
+      </div>
+    </header>
+
+    <div class="container">
+      <section id="main_content">
+        <h1>
+<a id="javascript--write-once-run-anywhere" class="anchor" href="#javascript--write-once-run-anywhere" aria-hidden="true"><span class="octicon octicon-link"></span></a>Java[Script] : Write once run anywhere</h1>
+
+<ul>
+<li>The Java lang arguments </li>
+</ul>
+
+<h2>
+<a id="the-promise-of-nodejs" class="anchor" href="#the-promise-of-nodejs" aria-hidden="true"><span class="octicon octicon-link"></span></a>The promise of node.js</h2>
+
+<ul>
+<li>But some early attempts like Jaxer, Mozilla Rhino, etc.</li>
+<li>The same code on browsers, servers, microcontrollers, etc.</li>
+</ul>
+
+<h2>
+<a id="how-to-write-a-library-that-can-be-integrated-in-any-environments-" class="anchor" href="#how-to-write-a-library-that-can-be-integrated-in-any-environments-" aria-hidden="true"><span class="octicon octicon-link"></span></a>How to write a library that can be integrated in any environments ?</h2>
+
+<h3>
+<a id="which-version-of-the-languages" class="anchor" href="#which-version-of-the-languages" aria-hidden="true"><span class="octicon octicon-link"></span></a>Which version of the languages</h3>
+
+<ul>
+<li>ES3, ES5 or ES6/7 ?</li>
+<li>ES5 because of <a href="https://github.com/es-shims/es5-shim">https://github.com/es-shims/es5-shim</a>
+</li>
+<li>Missing block : module system</li>
+</ul>
+
+<h3>
+<a id="old-school" class="anchor" href="#old-school" aria-hidden="true"><span class="octicon octicon-link"></span></a>Old school</h3>
+
+<p><em>NO MODULES</em></p>
+
+<ul>
+<li>export to global context</li>
+</ul>
+
+<p>Declaration :</p>
+
+<div class="highlight highlight-js"><pre><span class="pl-s">var</span> aja <span class="pl-k">=</span> {
+ <span class="pl-en">awesome</span> : <span class="pl-st">function</span>(){
+    <span class="pl-en">console</span><span class="pl-s3">.log</span>(<span class="pl-s1"><span class="pl-pds">'</span>awesome<span class="pl-pds">'</span></span>);
+ }
+};
+<span class="pl-s3">window</span>.aja <span class="pl-k">=</span> <span class="pl-s3">window</span>.aja <span class="pl-k">||</span> aja;</pre></div>
+
+<p>Usage :</p>
+
+<div class="highlight highlight-js"><pre><span class="pl-s3">window</span>.aja.awesome();</pre></div>
+
+<h3>
+<a id="common-js" class="anchor" href="#common-js" aria-hidden="true"><span class="octicon octicon-link"></span></a>Common JS</h3>
+
+<ul>
+<li>runs on node.js, io.js, browserify</li>
+</ul>
+
+<p>Declaration :</p>
+
+<div class="highlight highlight-js"><pre><span class="pl-s">var</span> aja <span class="pl-k">=</span> {
+ <span class="pl-en">awesome</span> : <span class="pl-st">function</span>(){
+    <span class="pl-en">console</span><span class="pl-s3">.log</span>(<span class="pl-s1"><span class="pl-pds">'</span>awesome<span class="pl-pds">'</span></span>);
+ }
+};
+<span class="pl-sv">module</span>.exports <span class="pl-k">=</span> aja;</pre></div>
+
+<p>Usage :</p>
+
+<div class="highlight highlight-js"><pre><span class="pl-s">var</span> aja <span class="pl-k">=</span> <span class="pl-s3">require</span>(<span class="pl-s1"><span class="pl-pds">'</span>aja<span class="pl-pds">'</span></span>);
+aja.awesome();</pre></div>
+
+<h3>
+<a id="amd" class="anchor" href="#amd" aria-hidden="true"><span class="octicon octicon-link"></span></a>AMD</h3>
+
+<ul>
+<li>require.js, almond, etc.</li>
+</ul>
+
+<p>Declaration :</p>
+
+<div class="highlight highlight-js"><pre>define([], <span class="pl-st">function</span>(){
+  <span class="pl-s">var</span> aja <span class="pl-k">=</span> {
+   <span class="pl-en">awesome</span> : <span class="pl-st">function</span>(){
+      <span class="pl-en">console</span><span class="pl-s3">.log</span>(<span class="pl-s1"><span class="pl-pds">'</span>awesome<span class="pl-pds">'</span></span>);
+   }
+  };
+  <span class="pl-k">return</span> aja;
+});</pre></div>
+
+<p>Usage :</p>
+
+<div class="highlight highlight-js"><pre><span class="pl-s3">require</span>([<span class="pl-s1"><span class="pl-pds">'</span>aja<span class="pl-pds">'</span></span>], <span class="pl-st">function</span>(<span class="pl-vpf">aja</span>){
+  aja.awesome();
+});</pre></div>
+
+<h3>
+<a id="es6-imports" class="anchor" href="#es6-imports" aria-hidden="true"><span class="octicon octicon-link"></span></a>ES6 imports</h3>
+
+<ul>
+<li>standard</li>
+</ul>
+
+<p>Declaration :</p>
+
+<div class="highlight highlight-js"><pre><span class="pl-s">var</span> aja <span class="pl-k">=</span> {
+ <span class="pl-en">awesome</span> : <span class="pl-st">function</span>(){
+    <span class="pl-en">console</span><span class="pl-s3">.log</span>(<span class="pl-s1"><span class="pl-pds">'</span>awesome<span class="pl-pds">'</span></span>);
+ }
+};
+<span class="pl-s">export</span> <span class="pl-k">default</span> aja;</pre></div>
+
+<p>Usage :</p>
+
+<div class="highlight highlight-js"><pre><span class="pl-k">import</span> aja from <span class="pl-s1"><span class="pl-pds">'</span>aja<span class="pl-pds">'</span></span>;
+aja.awesome();</pre></div>
+
+<h2>
+<a id="all-together" class="anchor" href="#all-together" aria-hidden="true"><span class="octicon octicon-link"></span></a>All together</h2>
+
+<div class="highlight highlight-js"><pre>(<span class="pl-st">function</span>(){
+<span class="pl-s1"><span class="pl-pds">'</span>use strict<span class="pl-pds">'</span></span>;
+  <span class="pl-s">var</span> aja <span class="pl-k">=</span> {
+   <span class="pl-en">awesome</span> : <span class="pl-st">function</span>(){
+      <span class="pl-en">console</span><span class="pl-s3">.log</span>(<span class="pl-s1"><span class="pl-pds">'</span>awesome<span class="pl-pds">'</span></span>);
+   }
+  };
+
+  <span class="pl-c">//AMD</span>
+  <span class="pl-k">if</span> (<span class="pl-k">typeof</span> define <span class="pl-k">===</span> <span class="pl-s1"><span class="pl-pds">'</span>function<span class="pl-pds">'</span></span> <span class="pl-k">&amp;&amp;</span> define.amd) {
+    define([], <span class="pl-st">function</span>(){  <span class="pl-c">//don't name it</span>
+      <span class="pl-k">return</span> aja;
+    });
+
+  <span class="pl-c">//CommonJs</span>
+  } <span class="pl-k">else</span> <span class="pl-k">if</span> (<span class="pl-k">typeof</span> <span class="pl-sv">exports</span> <span class="pl-k">===</span> <span class="pl-s1"><span class="pl-pds">'</span>object<span class="pl-pds">'</span></span>) {
+    <span class="pl-sv">module</span>.exports <span class="pl-k">=</span> aja;
+
+  <span class="pl-c">//Old school</span>
+  } <span class="pl-k">else</span> {
+  <span class="pl-s3">window</span>.aja <span class="pl-k">=</span> <span class="pl-s3">window</span>.aja <span class="pl-k">||</span> aja;
+  }
+
+ });</pre></div>
+
+<p>Or even better at <a href="https://github.com/umdjs/umd">https://github.com/umdjs/umd</a></p>
+
+<blockquote>
+<p>But where are ES6 modules?</p>
+</blockquote>
+
+<p>Imposible to feature detect (at least for now), see <a href="http://stackoverflow.com/questions/27922232/how-to-feature-detect-es6-modules">http://stackoverflow.com/questions/27922232/how-to-feature-detect-es6-modules</a></p>
+      </section>
+    </div>
+
+    
+  </body>
+</html>
