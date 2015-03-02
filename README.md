@@ -133,3 +133,17 @@ aja.awesome();
 > But where are ES6 modules?
 
 Imposible to feature detect (at least for now), see http://stackoverflow.com/questions/27922232/how-to-feature-detect-es6-modules
+
+## Going further
+
+Building a generator that bundle the code for each system:
+ - a generic one (using UMD)
+ - AMD
+ - CJS
+ - Old School
+ - ES6
+ 
+> I am not going to maintain 5 versions of my source code
+So, automate it dude
+
+Creation of a Grunt task : grunt-exportify
