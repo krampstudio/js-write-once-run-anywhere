@@ -146,4 +146,4 @@ Building a generator that bundle the code for each system:
 > I am not going to maintain 5 versions of my source code
 So, automate it dude
 
-Creation of a Grunt task : grunt-exportify
+Creation of a Grunt task : [grunt-exportify](https://github.com/krampstudio/grunt-exportify)
