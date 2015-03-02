@@ -1,19 +1,55 @@
-# Java[Script] : Write once run anywhere
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>JS Write once run everywhere</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link type="text/css" rel="stylesheet" href="style/style.css" />
+  </head>
+  <body>
+    <textarea id="source">
 
-- The Java lang arguments
+class: center, middle
 
-## The promise of node.js
+# Java[Script] : Write once run everywhere
 
- - But some early attempts like Jaxer, Mozilla Rhino, etc.
+---
+
+![javajs](img/javajs.png "JavaJavaScript")
+
+---
+
+# The promise of node.js
+
+ - Early attempts : Jaxer, Mozilla Rhino, etc.
  - The same code on browsers, servers, microcontrollers, etc.
 
-## How to write a library that can be integrated in any environments ?
+---
 
-### Which version of the languages
+# Use case
+
+[aja.js](http://krampstudio.com/aja.js/)
+
+---
+
+## How to write a library that works on every runtimes ?
+
+---
+
+### The language version ?
 
  - ES3, ES5 or ES6/7 ?
- - ES5 because of https://github.com/es-shims/es5-shim
- - Missing block : module system
+
+#### ES5 because of https://github.com/es-shims/es5-shim
+
+---
+
+### The Module system ?
+
+ - AMD, CommonJs, etc.
+
+#### ALL!
+
+---
 
 ### Old school
 
@@ -36,6 +72,8 @@ Usage :
 window.aja.awesome();
 ```
 
+---
+
 ### Common JS
 
  - runs on node.js, io.js, browserify
@@ -55,6 +93,8 @@ Usage :
 var aja = require('aja');
 aja.awesome();
 ```
+
+---
 
 ### AMD
 
@@ -79,9 +119,11 @@ require(['aja'], function(aja){
 });
 ```
 
+---
+
 ### ES6 imports
 
-  - standard
+  - standard (near future)
 
 Declaration :
 ```js
@@ -98,6 +140,8 @@ Usage :
 import aja from 'aja';
 aja.awesome();
 ```
+
+---
 
 ## All together
 
@@ -128,11 +172,19 @@ aja.awesome();
  });
 ```
 
-  Or even better at https://github.com/umdjs/umd
+---
 
-> But where are ES6 modules?
+### Or even better
+
+[Universal Module Definition](https://github.com/umdjs/umd)
+
+---
+
+&gt; But where are ES6 modules?
 
 Imposible to feature detect (at least for now), see http://stackoverflow.com/questions/27922232/how-to-feature-detect-es6-modules
+
+---
 
 ## Going further
 
@@ -143,7 +195,32 @@ Building a generator that bundle the code for each system:
  - Old School
  - ES6
 
-> I am not going to maintain 5 versions of my source code
-So, automate it dude
+---
+
+&gt; I am not going to maintain 5 versions of my source code
+
+---
+
+&gt; So, automate it dude
+
+![Grunt](img/grunt.png)
 
 Creation of a Grunt task : [grunt-exportify](https://github.com/krampstudio/grunt-exportify)
+
+---
+
+## Follow the dealer
+<pre>
+           @kramp
+            krampstudio.com
+ github.com/krampstudio
+</pre>
+
+    </textarea>
+    <script src="js/remark-latest.min.js">
+    </script>
+    <script>
+      var slideshow = remark.create();
+    </script>
+  </body>
+</html>
